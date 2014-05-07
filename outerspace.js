@@ -2,6 +2,8 @@ var net = require('net');
  
 net.createServer(function (client) {
 	console.log("client connected");
+
+    client.on("error", function() { client.destroy(); });
  
 	client.on('data', function (data) {
 		var request = data.toString('hex');
